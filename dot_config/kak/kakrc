@@ -1,0 +1,89 @@
+# Keybindings
+
+## Movement
+
+map global normal e j
+map global normal o k
+map global normal n h
+map global normal i l
+map global normal E J
+map global normal O K
+map global normal N H
+map global normal I L
+map global normal <a-i> <a-l>
+map global normal <a-n> <a-h>
+
+## Mode
+
+map global normal h i
+map global normal t o
+map global normal T O
+
+## Searching
+
+map global normal k n
+map global normal K N
+map global normal <a-k> <a-n>
+map global normal <a-K> <a-N>
+
+## Autocomplete
+
+hook global InsertCompletionShow .* %{
+    try %{
+        # this command temporarily removes cursors preceded by whitespace;
+        # if there are no cursors left, it raises an error, does not
+        # continue to execute the mapping commands, and the error is eaten
+        # by the `try` command so no warning appears.
+        execute-keys -draft 'h<a-K>\h<ret>'
+        map window insert <tab> <c-n>
+        map window insert <s-tab> <c-p>
+        hook -once -always window InsertCompletionHide .* %{
+            unmap window insert <tab> <c-n>
+            unmap window insert <s-tab> <c-p>
+        }
+    }
+}
+
+## Shortcuts
+
+map global normal q :buffer-previous<ret>
+map global normal Q :buffer-next<ret>
+
+# LSP
+
+eval %sh{kak-lsp}
+lsp-enable
+
+lsp-auto-hover-enable
+
+set global lsp_hover_anchor true
+
+# Auto-pairing
+
+enable-auto-pairs
+
+# Theming
+
+add-highlighter global/ number-lines
+colorscheme desertex
+
+# Powerline
+ 
+require-module powerline
+
+hook global WinCreate .* %{
+    powerline-start
+    powerline-theme desertex
+}
+
+# kakboard
+
+hook global WinCreate .* %{
+    kakboard-enable
+}
+
+# c
+
+hook global WinSetOption filetype=c %{
+    set-option window formatcmd 'clang-format'
+}
