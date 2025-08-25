@@ -87,3 +87,33 @@ hook global WinCreate .* %{
 hook global WinSetOption filetype=c %{
     set-option window formatcmd 'clang-format'
 }
+
+# latex
+
+hook global WinSetOption filetype=latex %{
+    set-option window formatcmd 'latexindent -'
+}
+
+# erlang
+
+hook global WinSetOption filetype=erlang %{
+    set-option window formatcmd 'erlfmt -'
+}
+
+# python
+
+hook global BufCreate filetype=python %{
+    set-option buffer formatcmd 'black -'
+}
+
+# pacscript
+
+hook global BufCreate .*\.pacscript %{
+    set-option buffer filetype 'sh'
+}
+
+# sh
+
+hook global WinSetOption filetype=sh %{
+    set-option window formatcmd 'shfmt'
+}
