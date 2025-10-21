@@ -137,3 +137,5 @@ shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 SSH_ASKPASS='/usr/bin/ksshaskpass'
 SSH_ASKPASS_REQUIRE=prefer
+
+. "$HOME/.local/bin/env"

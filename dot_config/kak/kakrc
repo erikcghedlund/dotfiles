@@ -46,8 +46,8 @@ hook global InsertCompletionShow .* %{
 
 ## Shortcuts
 
-map global normal q :buffer-previous<ret>
-map global normal Q :buffer-next<ret>
+#map global normal q :buffer-previous<ret>
+#map global normal Q :buffer-next<ret>
 
 # LSP
 
@@ -58,6 +58,10 @@ lsp-auto-hover-enable
 
 set global lsp_hover_anchor true
 
+# Kak-tree-sitter
+
+eval %sh{ kak-tree-sitter --with-highlighting -dks --init $kak_session }
+
 # Auto-pairing
 
 enable-auto-pairs
@@ -65,7 +69,7 @@ enable-auto-pairs
 # Theming
 
 add-highlighter global/ number-lines
-colorscheme desertex
+colorscheme voodooist
 
 # Powerline
  
@@ -73,7 +77,7 @@ require-module powerline
 
 hook global WinCreate .* %{
     powerline-start
-    powerline-theme desertex
+    powerline-theme voodooist
 }
 
 # kakboard
@@ -100,9 +104,17 @@ hook global WinSetOption filetype=erlang %{
     set-option window formatcmd 'erlfmt -'
 }
 
+#hook -group lsp-filetype-erlang global BufSetOption filetype=erlang %{
+#    set-option buffer lsp_servers %{
+#        [elp]
+#        args = ["server"]
+#        root_globs = ["rebar.config", "rebar.config.script", ".elp.toml", "build_info.json", ".elp_linst.toml", ".git", ".hg"]
+#    }
+#}
+
 # python
 
-hook global BufCreate filetype=python %{
+hook global WinSetOption filetype=python %{
     set-option buffer formatcmd 'black -'
 }
 
@@ -116,4 +128,16 @@ hook global BufCreate .*\.pacscript %{
 
 hook global WinSetOption filetype=sh %{
     set-option window formatcmd 'shfmt'
+}
+
+# json
+
+hook global WinSetOption filetype=json %{
+    set-option window formatcmd 'jq'
+}
+
+#
+
+hook global BufCreate .*\.fr %{
+    set-option buffer filetype 'haskell'
 }
