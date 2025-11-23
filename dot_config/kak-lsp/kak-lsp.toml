@@ -1,0 +1,17 @@
+[language.erlang]
+filetypes = ["erlang"]
+roots = ["rebar.config", "rebar.config.script", ".elp.toml", "build_info.json", ".elp_linst.toml", ".git", ".hg"]
+command = "elp"
+args = ["server"]
+
+[language.python]
+filetypes = ["python"]
+roots = ["pyrefly.toml"]
+command = "pyrefly"
+args = ["lsp"]
+
+[language.c]
+filetypes = ["c"]
+roots = ["compile_commands.json", ".clangd", ".git", ".hg"]
+command = "clangd"
+args = ["--log=error"]
