@@ -1,0 +1,40 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nmap e scrollDown\nmap o scrollUp\nmap k performFind\nmap K performBackwardsFind\nmap E previousTab\nmap O nextTab\nmap t LinkHints.activateMode\nmap T LinkHints.activateModeToOpenInNewForegroundTab",
+  "linkHintCharacters": "ashtgyneoiqdrup",
+  "grabBackFocus": true,
+  "settingsVersion": "2.3.1",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://w8.snokido.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.typingtest.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://play.typeracer.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://docs.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://monkeytype.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://monkeytype.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://hackertyper.net/*"
+    }
+  ]
+}
